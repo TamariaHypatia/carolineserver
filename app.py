@@ -1,9 +1,11 @@
 from flask import Flask, request
 import openai
+import os
 
 app = Flask(__name__)
 
-openai.api_key = 'your-openai-api-key'  # Replace this with your real OpenAI API key
+# ✅ Use your environment variable
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 @app.route('/', methods=['POST'])
 def chat():
