@@ -1,10 +1,11 @@
 from flask import Flask, request
 import openai
 import os
+import traceback
 
 app = Flask(__name__)
 
-# ✅ Use your environment variable
+# Use environment variable for API key
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 @app.route('/', methods=['POST'])
@@ -23,7 +24,7 @@ def chat():
         reply = response['choices'][0]['message']['content'].strip()
         return reply
     except Exception as e:
-        print(f"Error occurred: {str(e)}")  # Add this line to log the error
+        traceback.print_exc()  # Print full error details to logs
         return f"Error: {str(e)}", 500
 
 if __name__ == '__main__':
