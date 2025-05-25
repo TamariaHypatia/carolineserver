@@ -23,6 +23,7 @@ def chat():
         reply = response['choices'][0]['message']['content'].strip()
         return reply
     except Exception as e:
+        print(f"Error occurred: {str(e)}")  # Add this line to log the error
         return f"Error: {str(e)}", 500
 
 if __name__ == '__main__':
