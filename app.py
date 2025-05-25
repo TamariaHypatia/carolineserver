@@ -24,8 +24,10 @@ def chat():
         reply = response['choices'][0]['message']['content'].strip()
         return reply
     except Exception as e:
-        traceback.print_exc()  # Print full error details to logs
+        app.logger.error("Full exception below:")
+        app.logger.error(str(e))
         return f"Error: {str(e)}", 500
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
