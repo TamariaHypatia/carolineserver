@@ -16,13 +16,13 @@ def chat():
         return "No message received.", 400
 
     try:
-    #    response = openai.ChatCompletion.create(
-    #        model="gpt-3.5-turbo",
-    #        messages=[{"role": "user", "content": msg}],
-    #        max_tokens=100
-    #    )
-    #    reply = response['choices'][0]['message']['content'].strip()
-    #    return reply
+        response = openai.ChatCompletion.create(
+          model="gpt-3.5-turbo",
+          messages=[{"role": "user", "content": msg}],
+          max_tokens=100
+        )
+        reply = response['choices'][0]['message']['content'].strip()
+       return reply
     return "The AI is currently offline for maintenance, but I'm still glowing for you!"
     except Exception as e:
         app.logger.error("Full exception below:")
