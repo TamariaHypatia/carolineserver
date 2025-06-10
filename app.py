@@ -14,7 +14,14 @@ def chat():
     if not msg:
         return jsonify({"error": "No message received."}), 400
 
+    # Check if the message contains "Caroline"
+    if "Caroline" not in msg:
+        return jsonify({"error": "Please mention 'Caroline' before your question."}), 400
+
     try:
+        # Remove "Caroline" from the message before sending to OpenAI
+        msg = msg.replace("Caroline", "").strip()
+
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": msg}],
