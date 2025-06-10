@@ -20,7 +20,7 @@ def chat():
 
     try:
         # Remove "Caroline" from the message before sending to OpenAI
-        msg_content = msg[len("Caroline"):].strip()
+        msg_content = msg[len("caroline"):].strip()
 
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
