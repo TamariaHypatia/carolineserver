@@ -5,7 +5,7 @@ import traceback
 
 app = Flask(__name__)
 
-# Use environment variable for API key
+Use environment variable for API key
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 @app.route('/', methods=['POST'])
